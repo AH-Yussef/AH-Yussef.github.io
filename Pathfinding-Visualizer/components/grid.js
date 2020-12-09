@@ -107,7 +107,7 @@ Grid.prototype.processGrid = function(){
                 cellNode.isStart = true;
 
                 let start = document.createElement("img");
-                start.src = "./assets/arrow.png";
+                start.src = "assets/arrow.png";
                 start.style.height = '15px';
                 start.style.width = '15px';
                 start.id = 'start-img';
