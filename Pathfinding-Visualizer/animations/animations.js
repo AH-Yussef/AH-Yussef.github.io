@@ -64,26 +64,6 @@ function plotMazeByPath(grid){
     }, 0)
 }
 
-function plotMazeByWall(grid){
-    setTimeout(function() { 
-        const nodeId = `${row}-${col}`;
-        const currentNode = grid.getNodeById(nodeId);
-        if(currentNode.status === 'wall'){
-            document.getElementById(nodeId).className = 'wall';
-            currentNode.status = 'wall';
-        }
-        col++;
-        if(col === grid.numberOfCols){
-            col = 0;
-            row ++;
-        }           
-        if (row < grid.numberOfRows) {          
-            plotMazeByWall(grid);        
-        }    
-    }, 0)
-}
-
-
 function _reset_animation(nodeId) {
     let node = document.getElementById(nodeId);
     node.style.animation = 'none';

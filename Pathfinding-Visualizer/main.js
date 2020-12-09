@@ -259,20 +259,20 @@ function realTimeChange(){
 }
 
 function disableUI(){
-    visualizeBtn.disabled = true;
-    mazeGenerationBtn.disabled = true;
-    clearPathBtn.disabled = true;
-    clearGridBtn.disabled = true;
+    visualizeBtn.style.pointerEvents = 'none';
+    mazeGenerationBtn.style.pointerEvents = 'none';
+    clearPathBtn.style.pointerEvents = 'none';
+    clearGridBtn.style.pointerEvents = 'none';
     tableGrid.style.pointerEvents = 'none';
 }
 
 function enableUI_Visualize(){
     const check = setInterval(() => {
         if(document.getElementById(grid.targetId).className === 'path'){
-            visualizeBtn.disabled = false;
-            mazeGenerationBtn.disabled = false;
-            clearPathBtn.disabled = false;
-            clearGridBtn.disabled = false;
+            visualizeBtn.style.pointerEvents = 'auto';
+            mazeGenerationBtn.style.pointerEvents = 'auto';
+            clearPathBtn.style.pointerEvents = 'auto';
+            clearGridBtn.style.pointerEvents = 'auto';
             tableGrid.style.pointerEvents = 'auto';
             clearInterval(check);
         }
@@ -284,10 +284,10 @@ function enableUI_Maze(){
     const rightBottomCornerCell = document.getElementById(rightBottomCornerId);
     const check = setInterval(() => {
         if(rightBottomCornerCell.className === 'wall'){
-            visualizeBtn.disabled = false;
-            mazeGenerationBtn.disabled = false;
-            clearPathBtn.disabled = false;
-            clearGridBtn.disabled = false;
+            visualizeBtn.style.pointerEvents = 'auto';
+            mazeGenerationBtn.style.pointerEvents = 'auto';
+            clearPathBtn.style.pointerEvents = 'auto';
+            clearGridBtn.style.pointerEvents = 'auto';
             tableGrid.style.pointerEvents = 'auto';
             clearInterval(check);
         }
