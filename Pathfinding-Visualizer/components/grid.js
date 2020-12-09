@@ -119,7 +119,7 @@ Grid.prototype.processGrid = function(){
                 cellNode.isTarget = true;
 
                 let target = document.createElement("img");
-                target.src = "AH-Yussef.github.io/Pathfinding-Visualizer/assets/target.png";
+                target.src = "./Pathfinding-Visualizer/assets/target.png";
                 target.style.height = '15px';
                 target.style.width = '15px';
                 target.id = 'target-img';
