@@ -100,11 +100,11 @@ export function gaussJordan(matrix, precision){
         }
 
         // deciding the solution status
+        solution.solutionStatus = 1;
         for (var g = 0; g < numOfRows; g++) {
             solution.solutionStatus = 1;
             if(isNaN(solution.finalAnswer[g])){
                   solution.solutionStatus = -1;
-                  break;
             } 
             if(solution.finalAnswer[g]==Infinity||solution.finalAnswer[g]==-Infinity){
                   solution.solutionStatus = 0;

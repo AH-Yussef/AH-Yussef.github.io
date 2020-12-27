@@ -3,6 +3,7 @@ import {gauss_seidil} from '../solvingAlgorithms/Gauss_Seidil.js';
 import {gauss_elimination_standard, gauss_elimination_partial_pivoting} from '../solvingAlgorithms/gauss_elimination.js'
 import {gaussJordan} from '../solvingAlgorithms/gauss-jordan.js';
 import {choleskyDecomposition} from '../solvingAlgorithms/Cholesky.js';
+import {solve_lu} from '../solvingAlgorithms/lu.js';
 import {numberOfEquations} from "../app.js";
 import {displayNumericalSolutions} from "./jacobiSeidelDisplay.js";
 import {displayGaussSolution} from "./gaussDisplay.js";
@@ -230,8 +231,8 @@ function callLU(luType){
   const matrix = parameters.matrix;
   const precision = parameters.precision;
   let solution = null;
-  if(luType == 1){solution = null}
-  else if(luType == 2){solution = null}
+  if(luType == 1) solution = solve_lu(matrix, false, precision)
+  else if(luType == 2)solution = solve_lu(matrix, true, precision)
   else if(luType == 3) solution = choleskyDecomposition(matrix, precision);
   return solution;
 }

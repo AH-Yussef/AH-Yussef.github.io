@@ -18,6 +18,7 @@ function printSolutionStatus(solution){
     solutionStatusContainer.innerHTML = "$$\\text{The system has an infinite number of Solutions}$$";
     solutionArea.appendChild(solutionStatusContainer);
   }
+  solutionArea.appendChild(solutionStatusContainer);
   return solutionsStatus;
 }
 
