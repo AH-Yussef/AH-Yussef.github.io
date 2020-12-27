@@ -344,7 +344,7 @@ function changeAutomatically(matrix){
       numberOfEquationsInput.value = numberOfEquations;
       return;
     }
-    if(inputValue == numberOfEquations) return;
+
     if(inputValue < numberOfEquations){
       const numOfEqnToBeDeleted = numberOfEquations - inputValue;
       for(let i = 0; i < numOfEqnToBeDeleted; i++){
@@ -363,7 +363,7 @@ function changeAutomatically(matrix){
       for(let j = 0; j < matrix.length; j++){
         let coofInputId = `coof-${numberOfCurrentEqn}-${j+1}`;
         let currentCoofInput = document.getElementById(coofInputId);
-        icurrentCoofInput.value = matrix[i][j];
+        currentCoofInput.value = matrix[i][j];
       }
       let constInput = document.getElementById(`const-${numberOfCurrentEqn}`);
       constInput.value = matrix[i][matrix.length];
