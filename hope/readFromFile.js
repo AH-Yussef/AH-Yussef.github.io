@@ -1,14 +1,5 @@
 const fileInput = document.getElementById("file-input");
 
-function readFileContent(file) {
-    const reader = new FileReader()
-    return new Promise((resolve, reject) => {
-      reader.onload = event => resolve(event.target.result)
-      reader.onerror = error => reject(error)
-      reader.readAsText(file)
-    });
-}
-
 fileInput.onchange = () => {
     if ('files' in fileInput && fileInput.files.length > 0){
       const file = fileInput.files[0];
@@ -20,6 +11,16 @@ fileInput.onchange = () => {
       .catch( error => console.log(error))
     }
 }
+
+function readFileContent(file) {
+    const reader = new FileReader()
+    return new Promise((resolve, reject) => {
+      reader.onload = event => resolve(event.target.result)
+      reader.onerror = error => reject(error)
+      reader.readAsText(file)
+    });
+}
+
 
 function getMatrix(content){
     const matrix = [];
@@ -34,6 +35,37 @@ function getMatrix(content){
         matrix.push(matrixRow);
     }
 
-    console.log(matrix);
-    return matrix;
+    changeAutomatically(matrix);
 }
+
+function changeAutomatically(matrix){
+    const inputValue = matrix.length;
+    if(inputValue < 2){
+      numberOfEquationsInput.value = numberOfEquations;
+      return;
+    }
+    if(inputValue == numberOfEquations) return;
+    if(inputValue < numberOfEquations){
+      const numOfEqnToBeDeleted = numberOfEquations - inputValue;
+      for(let i = 0; i < numOfEqnToBeDeleted; i++){
+        deleteEquation();
+      }
+    }
+    if(inputValue > numberOfEquations){
+      const numOfEqnToBeCreated = inputValue - numberOfEquations;
+      for(let i = 0; i < numOfEqnToBeCreated; i++){
+        createNewEquation();
+      }
+    }
+  
+    for(let i = 0; i < matrix.length; i++){
+      let numberOfCurrentEqn = i + 1;
+      for(let j = 0; j < matrix.length; j++){
+        let coofInputId = `coof-${numberOfCurrentEqn}-${j+1}`;
+        let currentCoofInput = document.getElementById(coofInputId);
+        icurrentCoofInput.value = matrix[i][j];
+      }
+      let constInput = document.getElementById(`const-${numberOfCurrentEqn}`);
+      constInput.value = matrix[i][matrix.length];
+    }  
+  }

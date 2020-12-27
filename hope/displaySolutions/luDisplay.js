@@ -409,7 +409,10 @@ function printLUSteps(solution, crout){
 
     const uMatrixContainer = document.createElement('div');
     uMatrixContainer.className = "single-step";
-    uMatrixContainer.innerHTML = `$$U = \\begin{bmatrix}`;
+    
+    if(!crout) uMatrixContainer.innerHTML = `$$U = \\begin{bmatrix}`;
+    else uMatrixContainer.innerHTML = `$$L = \\begin{bmatrix}`;
+
     for(let i = 0; i < numberOfEquations; i++){
       const matrixRow = uMatrix[i];
       for(let j = 0; j < numberOfEquations -1; j++){
@@ -423,7 +426,8 @@ function printLUSteps(solution, crout){
     if(lMatrix.length === 3){
       const lMatrixContainer = document.createElement('div');
       lMatrixContainer.className = "single-step";
-      lMatrixContainer.innerHTML = `$$l_{${lMatrix[0]}${lMatrix[1]}} = ${lMatrix[2]}$$`;
+      if(!crout) lMatrixContainer.innerHTML = `$$l_{${lMatrix[0]}${lMatrix[1]}} = ${lMatrix[2]}$$`;
+      else lMatrixContainer.innerHTML = `$$u_{${lMatrix[0]}${lMatrix[1]}} = ${lMatrix[2]}$$`;
       stepContaineer.appendChild(lMatrixContainer);
       allStepsContainer.appendChild(stepContaineer);
     }
@@ -567,7 +571,6 @@ function printCholesky(solution){
 }
 
 function printDolittle(solution){
-  console.log(solution)
   const luCanBeFound = printLuCanBeFound(solution);
   if(!luCanBeFound) return;
   printLuFinalAnswer(solution);
@@ -584,7 +587,6 @@ function printDolittle(solution){
 }
 
 function printCrout(solution){
-  console.log(solution);
   const luCanBeFound = printLuCanBeFound(solution);
   if(!luCanBeFound) return;
   printLuFinalAnswer(solution);
