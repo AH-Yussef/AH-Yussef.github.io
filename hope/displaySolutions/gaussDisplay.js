@@ -23,13 +23,15 @@ function printSolutionStatus(solution){
 }
 
 function printMatrixSteps(solution){
+  const steps = solution.steps;
+  const numberOfSteps = steps.length;
+
+  if(numberOfSteps == 0) return;
+
   const matrixStepsLabel = document.createElement('div');
   matrixStepsLabel.className = "solutions-label";
   matrixStepsLabel.innerHTML = "$$\\underline{Steps:}$$";
   solutionArea.appendChild(matrixStepsLabel);
-
-  const steps = solution.steps;
-  const numberOfSteps = steps.length;
 
   const allStepsContainer = document.createElement('div');
   allStepsContainer.className = "steps-display";
@@ -116,6 +118,7 @@ function printBackwardSub(solution){
 
 
 function printJordanFinalSolution(solution){
+  if(solution.steps.length === 0) return;
   const finalStepLabel = document.createElement('div');
   finalStepLabel.className = "solutions-label";
   finalStepLabel.innerHTML = "$$\\underline{\\text{Final step:}}$$";

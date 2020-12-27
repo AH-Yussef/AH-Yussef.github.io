@@ -1,7 +1,3 @@
-var matrix = [[6,2,3],[2,4,1],[3,1,8]];
-var matrix2 = [[6,2,3,1],[2,4,1,1],[3,1,8,1]];
-var b = [1,1,1];
-
 function Step(discreption, L){
     this.discreption = discreption;
     this.L = L;
@@ -212,18 +208,3 @@ function getL(matrix,precision,solution) {
         }
         return solveCholesky(coofMatrix, constVector, precision);
     }
-    //testing
-    let x = choleskyDecomposition(matrix2,5);
-    console.log(x);
-    // if(x.canBeSolved === true){
-    //     for(var i = 0 ; i < x.LU.l_matrix.length ; i++){
-    //         document.write("......"+x.LU.l_matrix[i]);
-    //        }  
-    //        for(var i = 0 ; i < x.finalAnswer.length ; i++){
-    //         document.write("......"+x.forwardSub[i].formula);
-            
-    //        }  
-    // }  
-    // else {
-    //     document.write("can't be solved");
-    // }

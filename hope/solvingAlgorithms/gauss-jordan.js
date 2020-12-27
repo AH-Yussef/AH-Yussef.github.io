@@ -34,10 +34,7 @@ export function gaussJordan(matrix, precision){
           solutionStatus: "", //or inf or no soln 
           finalAnswer: [1, 2, 3], //x1, x2, x3, ..., xn
           steps: [
-                  {
-                    discreption: "",
-                    matrix: [] //the augmented matrix
-                  }
+
                 ]
       }       
       
@@ -54,13 +51,12 @@ export function gaussJordan(matrix, precision){
                   let currentRow = augArray[j];
                   if(currentRow[i] !== 0) {
                         let rowMul = - currentRow[i]/pivotRow[i];
-                        rowMul = +rowMul.toPrecision(precision);
                         for (let k = i; k < currentRow.length; k++) {
                               currentRow[k] = currentRow[k]+pivotRow[k] * rowMul;
                               currentRow[k] = +currentRow[k].toPrecision(precision);
                          }
                          rowMul = +rowMul.toPrecision(precision); 
-                         let stringStep = `Multiply row${i+1} by ${rowMul} and adding it to row${j+1}`;
+                         let stringStep = `Multiply row${i+1} by ${rowMul.toPrecision(precision)} and adding it to row${j+1}`;
                          let stepArray = JSON.parse(JSON.stringify(augArray));
                          solution.steps[stepsCounter]= new Step(stringStep,stepArray);
                          stepsCounter = stepsCounter + 1;

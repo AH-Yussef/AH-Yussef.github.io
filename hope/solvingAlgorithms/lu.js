@@ -150,6 +150,7 @@ export function solve_lu(matrix,is_crout,thePercision){
     fsub_steps= new Array(0);
     // we store the backward sub step in this array
     bsub_steps= new Array(0);
+    pivot = false;
     const x = [];
     for(let r = 0; r < matrix.length; r++) x[r] = [...matrix[r]];
     //we set the percision to the given value
@@ -446,10 +447,5 @@ function T(x){
 
 }
 
-//test
-console.log("tesing");
-const test = [[0,2,3,1],[2,4,1,1],[3,1,8,1]]
-console.log(solve_lu(test, true, 5));
-// console.log(solve_lu(test, true, 5));
-// console.log(solve_lu(test, true, 5));
+
 

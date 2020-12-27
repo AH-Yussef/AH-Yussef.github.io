@@ -296,3 +296,25 @@ function resetSolutionsArea(){
   const solutionsArea = document.getElementById("solution");
   solutionsArea.innerHTML = "";
 }
+
+
+function changeAutomatically(matrix){
+  const inputValue = matrix.length;
+  if(inputValue < 2){
+    numberOfEquationsInput.value = numberOfEquations;
+    return;
+  }
+  if(inputValue == numberOfEquations) return;
+  if(inputValue < numberOfEquations){
+    const numOfEqnToBeDeleted = numberOfEquations - inputValue;
+    for(let i = 0; i < numOfEqnToBeDeleted; i++){
+      deleteEquation();
+    }
+  }
+  if(inputValue > numberOfEquations){
+    const numOfEqnToBeCreated = inputValue - numberOfEquations;
+    for(let i = 0; i < numOfEqnToBeCreated; i++){
+      createNewEquation();
+    }
+  }
+}

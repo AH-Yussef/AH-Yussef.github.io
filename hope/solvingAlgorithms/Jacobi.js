@@ -75,14 +75,3 @@ export function jacobi(matrix, initial_guess=[0,0,0], num_iters=null, error=null
     return object;
 }
 
-
-
-// //TESTING
-// let matrix = [[3, 2, 1, 11], [-1, 1, 0, 3], [2, 1, -3, 16]];
-// let initial_guess = [1, 1, 1];
-// let num_iters = null;
-// let error = 0.000005; // the number is in percentage
-// let precision = 16;
-// //END TESTING
-
-// console.log(jacobi(matrix, initial_guess, num_iters, error, precision));
