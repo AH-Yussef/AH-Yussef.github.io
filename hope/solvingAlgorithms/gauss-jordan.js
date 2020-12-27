@@ -53,10 +53,10 @@ export function gaussJordan(matrix, precision){
                         let rowMul = - currentRow[i]/pivotRow[i];
                         for (let k = i; k < currentRow.length; k++) {
                               currentRow[k] = currentRow[k]+pivotRow[k] * rowMul;
-                              currentRow[k] = +currentRow[k].toPrecision(precision);
+                              currentRow[k] = +currentRow[k].toFixed(precision);
                          }
-                         rowMul = +rowMul.toPrecision(precision); 
-                         let stringStep = `Multiply row${i+1} by ${rowMul.toPrecision(precision)} and adding it to row${j+1}`;
+                         rowMul = +rowMul.toFixed(precision); 
+                         let stringStep = `Multiply row${i+1} by ${rowMul.toFixed(precision)} and adding it to row${j+1}`;
                          let stepArray = JSON.parse(JSON.stringify(augArray));
                          solution.steps[stepsCounter]= new Step(stringStep,stepArray);
                          stepsCounter = stepsCounter + 1;
@@ -77,9 +77,9 @@ export function gaussJordan(matrix, precision){
                         let rowMul = - currentRow[i]/pivotRow[i];
                            for (let k = 0; k < currentRow.length; k++) {
                                     currentRow[k] = currentRow[k] + pivotRow[k] * rowMul;
-                                    currentRow[k] = +currentRow[k].toPrecision(precision);
+                                    currentRow[k] = +currentRow[k].toFixed(precision);
                            }
-                           rowMul = +rowMul.toPrecision(precision); 
+                           rowMul = +rowMul.toFixed(precision); 
                            let stringStep = `Multiply row${i+1} by ${rowMul} and adding it to row${j+1}`;
                            let stepArray = JSON.parse(JSON.stringify(augArray));
                           solution.steps[stepsCounter]= new Step(stringStep,stepArray);
@@ -91,7 +91,7 @@ export function gaussJordan(matrix, precision){
         // getting final solution
         for (var g = 0; g < numOfRows; g++) {
                   solution.finalAnswer[g] = augArray[g][numOfColumns - 1] / augArray[g][g];
-                  solution.finalAnswer[g] = +solution.finalAnswer[g].toPrecision(precision);
+                  solution.finalAnswer[g] = +solution.finalAnswer[g].toFixed(precision);
 
         }
 
@@ -111,26 +111,3 @@ export function gaussJordan(matrix, precision){
     return solution;
 
 }
-
-// for testing the function
-// var sol = gaussJordan(array,2);
-
-// for (var x = 0; x < array.length; x++){
-//   document.write("......"+sol.finalAnswer[x]);//the final answer
-// }
-
-// document.write("......"+sol.solutionStatus);//0:unique   1:infinite   2:no solution
-
-// for (var x = 0; x < array.length; x++){
-//   document.write("......"+sol.steps[1].matrix[x]);//the previousStep matrix
-// }
-
-// document.write("......"+sol.steps[2].discreption);//the step done to the previousStep matrix
-
-// for (var x = 0; x < array.length; x++){
-//   document.write("......"+sol.steps[2].matrix[x]);//the newStep matrix
-// }
-
-
-const test = [[25,5,1,106.8],[64,8,1,177.2],[144,12,1,279.2]];
-// console.log(gaussJordan(test, 5))
