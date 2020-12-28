@@ -164,7 +164,7 @@ function getL(matrix,precision,solution) {
 	function isPositiveDefinite(L){
         var status = true;
         var numOfRows = L.length
-        var numOfColumns = matrix[0].length;
+        var numOfColumns = L[0].length;
     	for (var i=0 ; i<numOfRows ; i++) {
         	
 			for (var j=0 ; j<numOfColumns ; j++) {
