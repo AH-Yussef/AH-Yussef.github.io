@@ -150,6 +150,7 @@ tableGrid.onmouseup = (event) => {
 
 tableGrid.onmouseover = function(event){
     const elemClicked = event.target;
+
     if(grid_mouseDown && mouseOnGrid()){
         if(movingStart) {
             moveStartOrTarget(true, event);
@@ -164,14 +165,17 @@ tableGrid.onmouseover = function(event){
 };
 
 function selectGridCell(cellClicked){
+    if(cellClicked.id === 'grid') return;
+
     const cellNode = grid.getNodeById(cellClicked.id);
-    //if(cellNode.status === 'start' || cellNode.status === 'target') return;
+
     if(cellNode.isStart || cellNode.isTarget) return;
-    if(cellClicked.className !== 'wall' && cellClicked.id !== 'grid'){
+
+    if(cellClicked.className !== 'wall'){
         cellClicked.className = 'wall';
         grid.getNodeById(cellClicked.id).status = 'wall';
     }
-    else{
+    else if(!grid_mouseDown){
         cellClicked.className = 'unvisited';
         grid.getNodeById(cellClicked.id).status = 'unvisited';
     }
@@ -231,20 +235,28 @@ function clickableCell(elemClicked){
 function realTimeChange(){
     if(firstTime) return;
 
-    grid.clearPath();
+    grid.clearPath(); 
+
+    const Algos = {
+        BFS: '0',
+        Dijkstra: '1',
+        AStar: '2',
+        BellmanFord: '3',
+    };
+
 
     const selectedOption = pathFindingFilter.value;
     switch(selectedOption){
-        case "BFS":
+        case Algos.BFS:
             BFS(grid);
             break;
-        case "Dijkstra":
+        case Algos.Dijkstra:
             Dijkstra(grid);
             break;
-        case "A*":
+        case Algos.AStar:
             aStar(grid);
             break;
-        case "bellmanFord":
+        case Algos.BellmanFord:
             bellmanFord(grid);
             break;
     }
